@@ -4,8 +4,8 @@ library(rgdal)
 library(sf)
 library(rpostgis)
 drv<-dbDriver('PostgreSQL')
-pw=colnames(read_csv('/home/ducj/jupyter/sql/pw.csv'))
-con<-dbConnect(drv,dbname='ducj', port='5432', user='ducj',password=pw,host='203.128.184.77')
+
+con<-dbConnect(drv,dbname='ducj', port='5432', user='ducj',password='whckdwp1!@',host='203.128.184.77')
 RPostgreSQL::postgresqlCloseConnection(con)
 dbListTables(con)
 
