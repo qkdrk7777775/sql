@@ -1,0 +1,37 @@
+---
+title: "PostgreSql"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r package load,message=FALSE, warning=FALSE}
+library(RPostgreSQL)
+library(rgdal)
+library(sf)
+library(rpostgis)
+library(readr)
+drv<-dbDriver('PostgreSQL')
+pw=colnames(read_csv('/home/ducj/jupyter/sql/pw.csv'))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+con<-dbConnect(drv,dbname='postgres', port='5432', user='ducj',password=pw,host='ducj3.iptime.org')
+
+```
+
+```{r}
+dbListTables(con)
+RPostgreSQL::postgresqlCloseConnection(con)
+```
